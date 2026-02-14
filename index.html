@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lodge Management Admin Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .collapse { display: none; }
+        .expandable:hover { cursor: pointer; }
+        .button { margin: 5px; padding: 10px; border: none; background-color: #007BFF; color: white; border-radius: 5px; }
+        .button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Lodge Management Admin Tool</h1>
+
+    <h2>Lodge Overview</h2>
+    <form id="lodgeForm">
+        <label>Name: <input type="text" id="lodgeName"></label><br>
+        <label>City/State: <input type="text" id="cityState"></label><br>
+        <label>Status: <select id="status">
+            <option>Active</option>
+            <option>Inactive</option>
+        </select></label><br>
+        <label>Verified with Date: <input type="date" id="verifiedDate"></label><br>
+        <label><input type="checkbox" id="rvcHomeLodge"> RVC Home Lodge</label><br>
+        <label><input type="checkbox" id="manualEntry"> Manual Entry</label><br>
+        <label>Region: <select id="region">
+            <option>North</option>
+            <option>South</option>
+            <option>East</option>
+            <option>West</option>
+        </select></label><br>
+        <label>Ranking Officer: <input type="text" id="rankingOfficer" readonly></label><br>
+        <h3>Lodge Links</h3>
+        <label>Website: <input type="url" id="website"></label><br>
+        <label>Multiple Scheduling Tools: <input type="url" id="schedulingTools"></label><br>
+        <label>Discord: <input type="url" id="discord"></label><br>
+        <label>Social Media: <input type="url" id="socialMedia"></label>
+        <button type="button" class="button">Add</button><br>
+        <h2>Personnel Management</h2>
+        <div id="personnelManagement">
+            <div class="expandable" onclick="togglePersonnelList()">Personnel List</div>
+            <div class="collapse" id="personnelList">
+                <div><strong>Name:</strong> <input type="text"> | <strong>Rank:</strong> <input type="text"> | <strong>Supervising Officer:</strong> <input type="text"></div>
+                <div><strong>Name:</strong> <input type="text"> | <strong>Rank:</strong> <input type="text"> | <strong>Supervising Officer:</strong> <input type="text"></div>
+            </div>
+        </div>
+        <label>Supervising Officer: <input type="text" id="supervisingOfficer"></label><br>
+        <label><input type="checkbox" id="otherOverride"> Other</label><br>
+    </form>
+
+    <h2>Lodge Summary List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>City</th>
+                <th>Verified</th>
+                <th>RVC Home</th>
+                <th>Ranking Officer</th>
+                <th>Total Officers</th>
+                <th>Total Venues</th>
+                <th>Total Acquisition Events</th>
+                <th>Total Conventions</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="summaryList">
+            <!-- Lodge summary data will be inserted here -->
+        </tbody>
+    </table>
+    <button class="button" onclick="exportData('json')">Export to JSON</button>
+    <button class="button" onclick="exportData('csv')">Export to CSV</button>
+
+    <script>
+        function togglePersonnelList() {
+            var list = document.getElementById('personnelList');
+            list.classList.toggle('collapse');
+        }
+
+        function exportData(format) {
+            // Implement the JSON or CSV export logic here
+            console.log('Exporting data as', format);
+        }
+
+        // Persistence in localStorage
+        document.getElementById('lodgeForm').onsubmit = function() {
+            localStorage.setItem('lodgeData', JSON.stringify({
+                lodgeName: document.getElementById('lodgeName').value,
+                cityState: document.getElementById('cityState').value,
+                status: document.getElementById('status').value,
+                verifiedDate: document.getElementById('verifiedDate').value,
+                rvcHomeLodge: document.getElementById('rvcHomeLodge').checked,
+                manualEntry: document.getElementById('manualEntry').checked,
+                region: document.getElementById('region').value,
+                rankingOfficer: document.getElementById('rankingOfficer').value,
+                website: document.getElementById('website').value,
+                schedulingTools: document.getElementById('schedulingTools').value,
+                discord: document.getElementById('discord').value,
+                socialMedia: document.getElementById('socialMedia').value
+            }));
+            alert('Data saved in localStorage!');
+            return false; // Prevent default form submission
+        };
+    </script>
+</body>
+</html>
