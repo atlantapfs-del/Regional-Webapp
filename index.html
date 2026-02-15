@@ -4,89 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lodge Management Admin Tool</title>
-    <style>
-        .collapsible { background-color: #777; color: white; cursor: pointer; padding: 10px; width: 100%; border: none; text-align: left; outline: none; font-size: 15px; }
-        .content { padding: 0 18px; display: none; overflow: hidden; }
-    </style>
 </head>
 <body>
     <h1>Lodge Management Admin Tool</h1>
     <form id="lodgeForm">
+        <h2>General Information</h2>
         <label for="lodgeName">Lodge Name:</label>
         <input type="text" id="lodgeName" name="lodgeName" required><br><br>
 
-        <label for="cityState">City/State:</label>
-        <input type="text" id="cityState" name="cityState" required><br><br>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required><br><br>
 
-        <label for="status">Status:</label>
-        <input type="text" id="status" name="status" required><br><br>
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" name="capacity" required><br><br>
 
-        <label for="verifiedDate">Verified Date:</label>
-        <input type="date" id="verifiedDate" name="verifiedDate"><br><br>
+        <h2>Personnel Management</h2>
+        <label for="staffName">Staff Name:</label>
+        <input type="text" id="staffName" name="staffName" required><br><br>
 
-        <label for="rvcHomeLodge">RVC Home Lodge:</label>
-        <input type="checkbox" id="rvcHomeLodge" name="rvcHomeLodge"><br><br>
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" required><br><br>
 
-        <label for="manualEntry">Manual Entry:</label>
-        <input type="checkbox" id="manualEntry" name="manualEntry"><br><br>
+        <h2>Import/Export Functionality</h2>
+        <h3>Import Data</h3>
+        <input type="file" id="importFile" accept=".csv"><br><br>
 
-        <label for="region">Region:</label>
-        <select id="region" name="region">
-            <option value="region1">Region 1</option>
-            <option value="region2">Region 2</option>
-            <option value="region3">Region 3</option>
-        </select><br><br>
+        <button type="button" onClick="importData()">Import</button><br><br>
 
-        <label for="website">Website:</label>
-        <input type="url" id="website" name="website"><br><br>
-
-        <label for="schedulingTools">Scheduling Tools (links):</label>
-        <input type="text" id="schedulingTools" name="schedulingTools"><br><br>
-
-        <label for="discordLink">Discord Link:</label>
-        <input type="url" id="discordLink" name="discordLink"><br><br>
-
-        <label for="socialMedia">Social Media:</label>
-        <input type="text" id="socialMedia" name="socialMedia">
-        <button type="button" onclick="addSocialMedia()">Add</button><br><br>
-
-        <div id="personnelSection">
-            <h3>Personnel Section</h3>
-            <button type="button" class="collapsible">Add Personnel</button>
-            <div class="content">
-                <label for="personnelName">Name:</label>
-                <input type="text" id="personnelName" name="personnelName"><br>
-                <label for="rank">Rank:</label>
-                <input type="text" id="rank" name="rank"><br>
-                <label for="supervisingOfficer">Supervising Officer:</label>
-                <input type="text" id="supervisingOfficer" name="supervisingOfficer"><br>
-                <button type="button" onclick="addPersonnel()">Add Personnel</button>
-            </div>
-        </div>
-        <br>
-        <button type="submit">Submit</button>
+        <h3>Export Data</h3>
+        <button type="button" onClick="exportData()">Export</button>
     </form>
 
     <script>
-        function addSocialMedia() {
-            // Logic to add social media links
+        function importData() {
+            // Implement import functionality
+            alert('Import functionality to be implemented.');
         }
-
-        function addPersonnel() {
-            // Logic to add personnel details
-        }
-
-        var coll = document.getElementsByClassName("collapsible");
-        for (var i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-            });
+        function exportData() {
+            // Implement export functionality
+            alert('Export functionality to be implemented.');
         }
     </script>
 </body>
